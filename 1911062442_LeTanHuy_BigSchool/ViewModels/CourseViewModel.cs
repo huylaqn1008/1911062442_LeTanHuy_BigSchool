@@ -17,5 +17,6 @@ namespace _1911062442_LeTanHuy_BigSchool.ViewModels
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
+        //commit lần 1
     }
 }
