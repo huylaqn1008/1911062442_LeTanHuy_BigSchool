@@ -16,7 +16,7 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
-        // GET: Courses
+        //GET: Courses
         [Authorize]
         public ActionResult Create()
         {
@@ -26,20 +26,20 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
             };
             return View(viewModel);
         }
-        //[Authorize]
-        //[HttpPost]
-        //public ActionResult Create(CourseViewModel viewModel)
-        //{
-        //    var course = new Course()
-        //    {
-        //        LecturerId = User.Identity.GetUserId(),
-        //        DateTime = viewModel.GetDateTime(),
-        //        CategoryId = viewModel.Category,
-        //        Place = viewModel.Place
-        //    };
-        //    _dbContext.Courses.Add(course);
-        //    _dbContext.SaveChanges();
-        //    return RedirectToAction("Index", "Home");
-        //}
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(CourseViewModel viewModel)
+        {
+            var course = new Course
+            {
+                LecturerId = User.Identity.GetUserId(),
+                DateTime = viewModel.GetDateTime(),
+                CategoryId = viewModel.Category,
+                Place = viewModel.Place
+            };
+            _dbContext.Courses.Add(course);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
