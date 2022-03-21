@@ -16,6 +16,7 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
+        //commit
         //GET: Courses
         [Authorize]
         public ActionResult Create()
