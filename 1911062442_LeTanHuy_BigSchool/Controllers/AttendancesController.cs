@@ -17,17 +17,17 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
-        [HttpPost]
-        public IHttpActionResult Attend([FromBody] int courseId)
-        {
-            var attendance = new Attendance()
-            {
-                CourseId = courseId,
-                AttendeeId = User.Identity.GetUserId() 
-            };
-            _dbContext.Attendances.Add(attendance);
-            _dbContext.SaveChanges();
-            return Ok();
-        }
+        //[HttpPost]
+        //public IHttpActionResult Attend([FromBody] int courseId)
+        //{
+        //    var attendance = new Attendance()
+        //    {
+        //        CourseId = courseId,
+        //        AttendeeId = User.Identity.GetUserId() 
+        //    };
+        //    _dbContext.Attendances.Add(attendance);
+        //    _dbContext.SaveChanges();
+        //    return Ok();
+        //}
     }
 }
