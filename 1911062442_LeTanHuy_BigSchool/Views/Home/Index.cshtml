@@ -1,4 +1,4 @@
-﻿@*@model _1911062442_LeTanHuy_BigSchool.ViewModels.CoursesViewModel
+﻿@model _1911062442_LeTanHuy_BigSchool.ViewModels.CoursesViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,7 +6,7 @@
 <h2>Attending</h2>
 <div class="row">
     <ul class="course">
-        @foreach (var course in Model.UpcommingCourses)
+        @foreach (var course in Model.UpcomingCourses)
         {
             <li>
                 <div class="date">
@@ -67,4 +67,4 @@
             });
         });
     </script>
-}*@
+}
