@@ -20,6 +20,12 @@ namespace _1911062442_LeTanHuy_BigSchool.ViewModels
         [Required]
         public byte Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+        public bool ShowAction { get; set; }
+        public string Heading { get; set; }
+        //public string Action
+        //{
+        //    get { return (Id != 0) ? "Update" : "Create"; }
+        //}
         public DateTime GetDateTime()
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
