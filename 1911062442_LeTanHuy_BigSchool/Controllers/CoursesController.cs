@@ -62,6 +62,15 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
             return View(viewModel);
         }
         [Authorize]
+        public ActionResult Following()
+        {
+            var userId = User.Identity.GetUserId();
+            var followings = _dbContext.Followings
+                .Include(d => d.Followee)
+                .ToList();
+            return View(followings);
+        }
+        [Authorize]
         public ActionResult Mine()
         {
             var userId = User.Identity.GetUserId();
@@ -102,11 +111,11 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
             }
 
             var userId = User.Identity.GetUserId();
-            //var course = _dbContext.Courses.Single(c => c.Id == viewModel.Id && c.LecturerId == userId);
+            var course = _dbContext.Courses.Single(c => c.Id == viewModel.Id && c.LecturerId == userId);
 
-            //course.Place = viewModel.Place;
-            //course.DateTime = viewModel.GetDateTime();
-            //course.CategoryId = viewModel.Category;
+            course.Place = viewModel.Place;
+            course.DateTime = viewModel.GetDateTime();
+            course.CategoryId = viewModel.Category;
 
             _dbContext.SaveChanges();
 
