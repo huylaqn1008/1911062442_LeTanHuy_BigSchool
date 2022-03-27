@@ -39,7 +39,7 @@
             $(".js-cancel-course").click(function(e){
                 e.preventDefault();
                 var link =$(e.target);
-                bootbox.confirm("Bạn Muốn Xóa hả?",
+                bootbox.confirm("Are you sure to cancel?",
                     function(){
                         $.ajax({
                             url :"/api/courses/"+link.attr("data-course-id"),
@@ -48,7 +48,7 @@
                         .done(function(){
                             link.parents("li").fadeOut(function(){
                                 $(this).remove();
-                                alert("Xóa Thành công!!");
+                                alert("Delete success!!");
                             });
                         })
                         .fail(function(){
