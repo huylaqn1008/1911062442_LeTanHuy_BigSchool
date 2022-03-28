@@ -35,25 +35,24 @@
 @section scripts
 {
     <script>
-        $(document).ready(function(){
-            $(".js-cancel-course").click(function(e){
-                e.preventDefault();
-                var link =$(e.target);
+        $(document).ready(function () {
+            $(".js-cancel-course").click(function (e) {
+                var link = $(e.target);
                 bootbox.confirm("Are you sure to cancel?",
-                    function(){
+                    function () {
                         $.ajax({
-                            url :"/api/courses/"+link.attr("data-course-id"),
-                            method:"DELETE"
+                            type: 'DELETE',
+                            url: "/Courses/Delete/" + link.attr("data-course-id"),
+                            method: "DELETE"
                         })
-                        .done(function(){
-                            link.parents("li").fadeOut(function(){
-                                $(this).remove();
-                                alert("Delete success!!");
+                            .done(function () {
+                                link.parents("li").fadeOut(function () {
+                                    $(this).remove();
+                                });
+                            })
+                            .fail(function () {
+                                alert("Something Failed!");
                             });
-                        })
-                        .fail(function(){
-                            alert("Somethings failed!!");
-                        });
                     });
             });
         });

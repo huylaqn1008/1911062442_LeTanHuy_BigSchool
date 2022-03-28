@@ -82,6 +82,15 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
             };
             return View(courses);
         }
+        public ActionResult Delete(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var course = _dbContext.Courses.Single(c => c.Id == id && c.LecturerId == userId);
+            _dbContext.Courses.Remove(course);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Mine", "Courses");
+        }
         [Authorize]
         public ActionResult Edit(int id)
         {
@@ -95,7 +104,7 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
                 Category = course.CategoryId,
                 Place = course.Place,
                 Heading = "Edit Course",
-                //Id = course.Id
+                Id = course.Id
             };
             return View("Create", viewModel);
         }
