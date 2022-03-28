@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Attending</h2>
+<h2>I'm Going'</h2>
 <div class="row">
     <ul class="course">
         @foreach (var course in Model.UpcomingCourses)
@@ -12,27 +12,19 @@
             <li>
                 <div class="date">
                     <div class="month">
-                        @course.DateTime.ToString("MM")
-                    </div>
-                    <div class="day">
-                        @course.DateTime.ToString("dd")
+                        @course.DateTime.ToString("MM/dd")
                     </div>
                 </div>
                 <div class="details">
                     <span class="lecturer">
-                        @course.Lecturer.Name
-                        @if (Model.ShowAction)
-                        {
-                            <button data-user-id="@course.LecturerId" class="btn btn-default btn-sm js-toggle-follow">Follow?</button>
-                        }
+                        Name: @course.Lecturer.Name
                     </span>
                     <span class="category">
-                        @course.Category.Name
-                        @if (Model.ShowAction)
-                        {
-                            <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                        }
+                        || Category: @course.Category.Name
                     </span>
+                    <div class="Place">
+                        Place: @course.Place
+                    </div>
                 </div>
 
             </li>

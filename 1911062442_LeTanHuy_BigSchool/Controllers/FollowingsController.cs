@@ -3,6 +3,7 @@ using _1911062442_LeTanHuy_BigSchool.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -31,6 +32,19 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
             _dbContext.Followings.Add(folowing);
             _dbContext.SaveChanges();
             return Ok();
+        }
+        [HttpDelete]
+        public IHttpActionResult UnFollow(string Id)
+        {
+            var userId = User.Identity.GetUserId();
+            var following = _dbContext.Followings.SingleOrDefault(f => f.FollowerId == userId && f.FolloweeId == Id);
+            if (following == null)
+            {
+                return NotFound();
+            }
+            _dbContext.Followings.Remove(following);
+            _dbContext.SaveChanges();
+            return Ok(Id);
         }
     }
 }
