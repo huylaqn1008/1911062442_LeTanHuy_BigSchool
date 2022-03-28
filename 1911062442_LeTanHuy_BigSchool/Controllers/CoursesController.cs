@@ -130,5 +130,6 @@ namespace _1911062442_LeTanHuy_BigSchool.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        //chấm điểm
     }
 }
